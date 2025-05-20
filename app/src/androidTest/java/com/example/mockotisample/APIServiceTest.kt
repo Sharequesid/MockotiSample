@@ -29,12 +29,12 @@ class APIServiceTest {
 
         val clientBuilder = OkHttpClient.Builder()
 
-        if (BuildConfig.DEBUG) {
+        //if (BuildConfig.DEBUG) {
             clientBuilder.addNetworkInterceptor(
                 HttpLoggingInterceptor().setLevel(
                     HttpLoggingInterceptor.Level.BODY
                 ))
-        }
+        //}
 
 
         val retrofit = Retrofit.Builder()

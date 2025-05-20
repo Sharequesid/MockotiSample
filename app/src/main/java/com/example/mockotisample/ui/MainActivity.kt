@@ -58,12 +58,15 @@ class MainActivity : AppCompatActivity(), PokedexAdapter.OnClickListener {
                     }
                     is NetworkResult.Success -> {
                         Log.d("MainActivity","${it.data.toString()}")
-                        //Toast.makeText(mContext,"${it.data.toString()}",Toast.LENGTH_LONG).show()
-                        var templist = it.data?.pokemonEntries
-                        var pokemonList : MutableList<Pokemon> = ArrayList<Pokemon>()
-                        for (temp in templist!!)
-                            pokemonList.add(temp.toPokemon())
-                        adapter.submitList(pokemonList)
+                        if (it.data?.pokemonEntries?.isEmpty()==true){
+                            Toast.makeText(mContext,"There is no item",Toast.LENGTH_LONG).show()
+                        }else {
+                            var templist = it.data?.pokemonEntries
+                            var pokemonList: MutableList<Pokemon> = ArrayList<Pokemon>()
+                            for (temp in templist!!)
+                                pokemonList.add(temp.toPokemon())
+                            adapter.submitList(pokemonList)
+                        }
                     }
                 }
             })
